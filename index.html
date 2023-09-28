@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a href="" class="navbar-brand" style="padding-left: 20px">Weather App</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#ccsl">
+            <span class="navbar-toggler-icon" id="navIcon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="ccsl">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#Search" class="nav-link">Search</a></li>
+                <li class="nav-item"><a href="#Forecast" class="nav-link">Forecast</a></li>
+                <li class="nav-item"><a href="#History" class="nav-link">History</a></li>
+            </ul>
+        </div>
+        <button class="btn btn-primary" id="btn-SignUp">Sign up</button>
+        <i class="bi bi-brightness-high" id="tog"></i>
+    </nav>
+
+
+     <!-- Sign in -->
+
+     <div class="popup">
+        <div class="close-btn" id="close-btn">&times;</div>
+        <div class="form">
+            <h2>Log in</h2>
+            <div class="form-element">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-element">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password">
+            </div>
+            <div class="form-element">
+                <button>Siggn in</button>
+            </div>
+        </div>
+    </div>
+
+
+    
+     <!-- carousel -->
+    <section class="home" id="home"></section>
+
+    <div class="container "  style="padding-top: 20px;">
+        <div class="carousel slide carousel-fade" data-ride="carousel" id="carouselController">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselController" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselController" data-slide-to="1" ></li>
+                <li data-target="#carouselController" data-slide-to="2" ></li> 
+            </ol>
+            <div class="carousel-inner border border-white">
+                <div class="carousel-item active" >
+                    <img src="./assets/img-1.jpg" class="d-block w-100" alt="...">
+                    <div id="carousel" class="carousel-caption d-none d-md-block " style="position: absolute; left: 0; right: auto; margin-left: 10%; text-align: left;">
+                        <h1 style="font-size: 4em;">Stay</h1>
+                        <h1 style="font-size: 4em;">Updated With Us</h1>
+                        <h1 style="font-size: 4em;">Avoid bad weather</h1>
+                    </div>
+                </div>
+                <div class="carousel-item" >
+                    <img src="./assets/img-2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img-3.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <a href="#carouselController" class="carousel-control-prev" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a href="#carouselController" class="carousel-control-next" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Tag line -->
+
+    <h1 id="TagLine">Find out whether you need an umbrella today...!</h1>
+    
+    
+    <!-- Search Box -->
+
+    <section class="Search" id="Search"></section>
+
+    <div id="searchDiv" class="container">
+        <form id="searchForm" action="">
+            <input id="searchIn" type="text" placeholder="Enter City Name">
+            <button id="searchBtn" type="button" onclick="example(), getForcastresult()">Search</button>
+        </form>
+    </div>
+
+
+    <!-- Status Now / Map -->
+
+    <div class="row" id="statDiv">
+        <div class="col-lg-6 col-md-12" id="firstDiv">
+            <div id="statCardId" class="statNowCard">
+                <div class="itemNow">
+                    <h1>Now</h1>
+                </div>
+                <div id="statusWeatherIcon" class="itemIcon">
+                    <img class="iconSize" id="nowWicon" alt="Weather Icon" src="./assets/partally-sunny-svgrepo-com.svg">
+                </div>
+                <div id="itemStaiId" class="itemStat">
+                    <h4 id="conditionText">Heavy Rain</h4>
+                </div>
+                <div class="itemLoc">
+                    <h1 id="city-name-now">Nuwara Eliya</h1>
+                </div>
+                <div class="itemTemp">
+                    <h2 id="temp-now">18C</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map -->
+
+        <div class="col-lg-6 col-md-12" id="secondDiv">
+            <iframe id="mapFrame" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15849.550111578184!2d79.9074921!3d6.7224779!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae247a4c04ae595%3A0x4060e3527ce41470!2siCET%20-%20Institute%20of%20Computer%20Engineering%20Technology%20(Pvt)%20Ltd!5e0!3m2!1sen!2slk!4v1695415281591!5m2!1sen!2slk" width="500" height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+    </div>
+
+    <!-- 8 cards -->
+
+    <div>
+
+        <div class="container">
+            <div id="cards8" class="row">
+                <div class="col-12 col-md-6 col-lg-3 cardsSTL" id="card1">
+                    <div class="centered-content">
+                        <h4>Feels Like</h4>
+                        <div class="circle">
+                            <img class="iconSize" src="./assets/person-arms-up.svg" alt="">
+                        </div>
+                        <h4 id="feels-like-card">31.1 °C</h4>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="card2">
+                    <div class="centered-content ">
+                        <h4>Wind Gusts</h4>
+                        <div class="circle">
+                            <img class="iconSize" src="./assets/wind.svg" alt="">                       
+                        x</div>
+                        <h4 id="wind-gusts-card">10.8 km/h</h4>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="card3">
+                    <div class="centered-content">
+                        <h4>Humidity</h4>
+                        <div class="circle">
+                            <img class="iconSize" src="./assets/humidity.svg" alt="">
+                        </div>
+                        <h4 id="humidity-card">54 %</h4>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="card4">
+                    <div class="centered-content">
+                        <h4>Visibility</h4>
+                        <div class="circle">
+                            <img class="iconSize" src="./assets/eye.svg" alt="">
+                        </div>
+                        <h4 id="visibility-card">10 km</h4>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="card5">
+                    <div class="centered-content">
+                        <h4>Wind Direction</h4>
+                        <div class="circle">
+                            <img class="iconSize" src="./assets/black-wind-direction-indicator-16584.svg" alt="">
+                        </div>
+                        <h4 id="wind-Direction-card">WSW</h4>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="card6">
+                    <div class="centered-content">
+                        <h4>Pressure</h4>
+                        <div class="circle">
+                            <img class="iconSize" src="./assets/speedometer.svg" alt="">
+                        </div>
+                        <h4 id="pressure-card">1011 Pa</h4>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="card7">
+                    <div class="centered-content">
+                        <h4>Cloud Cover</h4>
+                        <div class="circle">
+                            <img class="iconSize" src="./assets/clouds-fill.svg" alt="">
+                        </div>
+                        <h4 id="cloud-cover-card">86 %</h4>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="card8">
+                    <div class="centered-content">
+                        <h4>UV</h4>
+                        <div class="circle">
+                            <img class="iconSize" src="./assets/emoji-sunglasses.svg" alt="">
+                        </div>
+                        <h4 id="uv-card">6</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="line" style="margin-top: 80px;"></div>
+
+    <!-- Tag line -->
+
+    <section class="Forecast" id="Forecast"></section>
+
+    <h1 id="TagLine">Find out about next Five days...!</h1>
+
+    <!-- Forecast -->
+
+    <div>
+
+        <div class="container forecastContainer">
+            <div id="forecastCards5" class="row">
+                <div class="col-12 col-md-6 col-lg-3 " id="ForeCard1">
+                    <div class="centered-content">
+                        <h5 id="day-1">Day 1</h5>
+                        <div class="circle">
+                            <img id="day-1-icon" class="iconSize" src="" alt="">
+                        </div>
+                        <div>
+                            <h6 id="day1-Condition">Sunny</h6>
+                            <hr>
+                            <h6>Rain Chance</h6>
+                            <h6 id="day1-rain-chance">45%</h6>
+                            <hr>
+                            <h6>Max Temp</h6>
+                            <h6 id="day1-m-temp">32 °C</h6>
+                            <hr>
+                            <h6>Max Wind</h6>
+                            <h6 id="day1-m-wind">32 km/h</h6>
+                            <hr>
+                            <h6>Will rain</h6>
+                            <h6 id="day1-will-rain">32 C</h6>
+                        </div>
+                    </div>  
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="ForeCard2">
+                    <div class="centered-content ">
+                        <h5 id="day-2">Day 2</h5>
+                        <div class="circle">
+                            <img id="day-2-icon" class="iconSize" src="" alt="">                        
+                        </div>
+                        <div>
+                            <h6 id="day2-Condition">Sunny</h6>
+                            <hr>
+                            <h6>Rain Chance</h6>
+                            <h6 id="day2-rain-chance">67%</h6>
+                            <hr>
+                            <h6>Max Temp</h6>
+                            <h6 id="day2-m-temp">32 °C</h6>
+                            <hr>
+                            <h6>Max Wind</h6>
+                            <h6 id="day2-m-wind">60 km/h</h6>
+                            <hr>
+                            <h6>Will rain</h6>
+                            <h6 id="day2-will-rain">No</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="ForeCard3">
+                    <div class="centered-content">
+                        <h5 id="day-3">Day 3</h5>
+                        <div class="circle">
+                            <img id="day-3-icon" class="iconSize" src="" alt="">
+                        </div>
+                        <div>
+                            <h6 id="day3-Condition">Cloudy</h6>
+                            <hr>
+                            <h6>Rain Chance</h6>
+                            <h6 id="day3-rain-chance">90%</h6>
+                            <hr>
+                            <h6>Max Temp</h6>
+                            <h6 id="day3-m-temp">32 °C</h6>
+                            <hr>
+                            <h6>Max Wind</h6>
+                            <h6 id="day3-m-wind">23 km/h</h6>
+                            <hr>
+                            <h6>Will rain</h6>
+                            <h6 id="day3-will-rain">Yes</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="ForeCard4">
+                    <div class="centered-content">
+                        <h5 id="day-4">Day 4</h5>
+                        <div class="circle">
+                            <img id="day-4-icon" class="iconSize" src="" alt="">
+                        </div>
+                        <div>
+                            <h6 id="day4-Condition">Sunny</h6>
+                            <hr>
+                            <h6>Max Temp</h6>
+                            <h6 id="day4-m-temp">29 °C</h6>
+                            <hr>
+                            <h6>Min Temp</h6>
+                            <h6 id="day4-m-temp">29 °C</h6>
+                            <hr>
+                            <h6>Max Wind</h6>
+                            <h6 id="day4-m-wind">20 km/h</h6>
+                            <hr>
+                            <h6>Will rain</h6>
+                            <h6 id="day4-will-rain">No</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="ForeCard5">
+                    <div class="centered-content">
+                        <h5 id="day-5">Day 5</h5>
+                        <div class="circle">
+                            <img id="day-5-icon" class="iconSize" src="" alt="">
+                        </div>
+                        <div>
+                            <h6 id="day5-Condition">Rainny</h6>
+                            <hr>
+                            <h6>Rain Chance</h6>
+                            <h6 id="day5-rain-chance">78%</h6>
+                            <hr>
+                            <h6>Max Temp</h6>
+                            <h6 id="day5-m-temp">32 °C</h6>
+                            <hr>
+                            <h6>Max Wind</h6>
+                            <h6 id="day5-m-wind">45 km/h</h6>
+                            <hr>
+                            <h6>Will rain</h6>
+                            <h6 id="day5-will-rain">Yes</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="line" style="margin-top: 80px;"></div>
+
+    <!-- Tag line -->
+
+    <section class="History" id="History"></section>
+
+    <h1 id="TagLine">Find out about Last Five days...!</h1>
+
+    <!-- History -->
+
+    <div>
+
+        <div class="container historyContainer">
+            <div id="historyCards5" class="row">
+                <div class="col-12 col-md-6 col-lg-3 " id="historyCard1">
+                    <div class="centered-content">
+                        <h5 id="dayH-1">Day 1</h5>
+                        <div class="circle">
+                            <img id="dayH-1-icon" class="iconSize" src="" alt="">
+                        </div>
+                        <div>
+                            <h6 id="dayH1-Condition">Sunny</h6>
+                            <hr>
+                            <h6>Max Temp</h6>
+                            <h6 id="day1-max-temp">32 °C</h6>
+                            <hr>
+                            <h6>Min Temp</h6>
+                            <h6 id="day1-min-temp">32 °C</h6>
+                            <hr>
+                            <h6>Max Wind</h6>
+                            <h6 id="dayH1-m-wind">32 km/h</h6>
+                            <hr>
+                            <h6>Visibility</h6>
+                            <h6 id="ddayH1-visibility">32 C</h6>
+                        </div>
+                    </div>  
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="historyCard2">
+                    <div class="centered-content ">
+                        <h5 id="dayH-2">Day 2</h5>
+                        <div class="circle">
+                            <img id="dayH-2-icon" class="iconSize" src="" alt="">
+                        </div>
+                        <div>
+                            <h6 id="dayH2-Condition">Sunny</h6>
+                            <hr>
+                            <h6>Max Temp</h6>
+                            <h6 id="dayH2-max-temp">32 °C</h6>
+                            <hr>
+                            <h6>Min Temp</h6>
+                            <h6 id="dayH2-min-temp">32 °C</h6>
+                            <hr>
+                            <h6>Max Wind</h6>
+                            <h6 id="dayH2-m-wind">32 km/h</h6>
+                            <hr>
+                            <h6>Visibility</h6>
+                            <h6 id="dayH2-visibility">32 C</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="historyCard3">
+                    <div class="centered-content">
+                        <h5 id="dayH-3">Day 3</h5>
+                        <div class="circle">
+                            <img id="dayH-3-icon" class="iconSize" src="" alt="">
+                        </div>
+                        <div>
+                            <h6 id="dayH3-Condition">Sunny</h6>
+                            <hr>
+                            <h6>Max Temp</h6>
+                            <h6 id="dayH3-max-temp">32 °C</h6>
+                            <hr>
+                            <h6>Min Temp</h6>
+                            <h6 id="dayH3-min-temp">32 °C</h6>
+                            <hr>
+                            <h6>Max Wind</h6>
+                            <h6 id="dayH3-m-wind">32 km/h</h6>
+                            <hr>
+                            <h6>Visibility</h6>
+                            <h6 id="dayH3-visibility">32 C</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="historyCard4">
+                    <div class="centered-content">
+                        <h5 id="dayH-4">Day 4</h5>
+                        <div class="circle">
+                            <img id="dayH-4-icon" class="iconSize" src="" alt="">
+                        </div>
+                        <div>
+                            <h6 id="dayH4-Condition">Sunny</h6>
+                            <hr>
+                            <h6>Max Temp</h6>
+                            <h6 id="dayH4-max-temp">32 °C</h6>
+                            <hr>
+                            <h6>Min Temp</h6>
+                            <h6 id="dayH4-min-temp">32 °C</h6>
+                            <hr>
+                            <h6>Max Wind</h6>
+                            <h6 id="dayH4-m-wind">32 km/h</h6>
+                            <hr>
+                            <h6>Visibility</h6>
+                            <h6 id="dayH4-visibility">32 C</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3" id="historyCard5">
+                    <div class="centered-content">
+                        <h5 id="dayH-5">Day 5</h5>
+                        <div class="circle">
+                            <img id="dayH-5-icon" class="iconSize" src="" alt="">
+                        </div>
+                        <div>
+                            <h6 id="dayH5-Condition">Sunny</h6>
+                            <hr>
+                            <h6>Max Temp</h6>
+                            <h6 id="dayH5-max-temp">32 °C</h6>
+                            <hr>
+                            <h6>Min Temp</h6>
+                            <h6 id="dayH5-min-temp">32 °C</h6>
+                            <hr>
+                            <h6>Max Wind</h6>
+                            <h6 id="dayH5-m-wind">32 km/h</h6>
+                            <hr>
+                            <h6>Visibility</h6>
+                            <h6 id="dayH5-visibility">32 C</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+  
+    <div>
+        <footer class="footercss">
+            <div class="containerFooter">
+                <div class="row footerRow">
+                    
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-box">
+                            <h2 class="footerHeading">Company</h2>
+                                <ul>
+                                    <li>Proven Superior Accuracy</li>
+                                    <li>About AccuWeather</li>
+                                    <li>Digital Advertising</li>
+                                    <li>Careers</li>
+                                    <li>Press</li>
+                                    <li>Contact Us</li>
+                                </ul>
+                        </div>                    
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-box">
+                            <h2>Proudects & Services</h2>
+                                <ul>
+                                    <li>For Business</li>
+                                    <li>For Partners</li>
+                                    <li>For Advertising</li>
+                                    <li>AccuWeather APIs</li>
+                                    <li>AccuWeather Connect</li>
+                                </ul>
+                        </div>                    
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-box">
+                            <h2>More</h2>
+                                <ul>
+                                    <li>AccuWeather Ready</li>
+                                    <li>Severe Weather</li>
+                                    <li>Weather News</li>
+                                    <li>Hurricane</li>
+                                </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-box">
+                            
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+   
+  
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- <script>
+        var $j = jQuery.noConflict();
+    </script> -->
+    
+    <script src="./scripts/api.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./bootstrap/js/bootstrap.js"></script>
+    <!-- <script src="./scripts/jquery.js"></script> -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    
+</body>
+</html>
