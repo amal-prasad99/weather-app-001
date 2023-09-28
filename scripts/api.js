@@ -215,24 +215,32 @@ function getHistoryresult(searchInput) {
   const dayH5Visibility = document.getElementById("dayH5-visibility");
 
   var currenDate = new Date();
+  console.log(currenDate+" today");
 
-  // Subtract 7 days (7 * 24 * 60 * 60 * 1000 milliseconds) from the current date
-  var sevenDaysAgo = new Date(currenDate.getTime() - 5 * 24 * 60 * 60 * 1000);
+  var yearC = currenDate.getFullYear();
+  var monthC = String(currenDate.getMonth() + 1).padStart(2, '0'); // Adding 1 to month because it is zero-based
+  var dayC = String(currenDate.getDate()).padStart(2, '0');
+
+  var formattedDateC = yearC + '-' + monthC + '-' + dayC;
+  console.log(formattedDateC+" Curr days back");
+
+  // Subtract 5 days (5 * 24 * 60 * 60 * 1000 milliseconds) from the current date
+  var fiveDaysAgo = new Date(currenDate.getTime() - 5 * 24 * 60 * 60 * 1000);
 
   // Extract the year, month, and day components from the sevenDaysAgo date
-  var year = sevenDaysAgo.getFullYear();
-  var month = String(sevenDaysAgo.getMonth() + 1).padStart(2, '0'); // Adding 1 to month because it is zero-based
-  var day = String(sevenDaysAgo.getDate()).padStart(2, '0');
+  var year = fiveDaysAgo.getFullYear();
+  var month = String(fiveDaysAgo.getMonth() + 1).padStart(2, '0'); // Adding 1 to month because it is zero-based
+  var day = String(fiveDaysAgo.getDate()).padStart(2, '0');
 
   // Create the "yyyy-mm-dd" formatted string
   var formattedDate = year + '-' + month + '-' + day;
-  console.log(formattedDate);
+  console.log(formattedDate+" 5 days back");
 
   const key = "ae02f9b1bf7241ea8c3173632232409";
 
   $.ajax({
     method : "GET",
-    url : `https://api.weatherapi.com/v1/history.json?&dt=2023-09-22&end_dt=2023-09-27&key=${key}&q=${searchInput}`,
+    url : `https://api.weatherapi.com/v1/history.json?&dt=${formattedDate}&end_dt=${formattedDateC}&key=${key}&q=${searchInput}`,
     success : (res2) => {
       console.log(res2);
 
@@ -277,6 +285,8 @@ function getHistoryresult(searchInput) {
       dayH3Visibility.textContent = res2.forecast.forecastday[3].day.avgvis_km+" km";
       dayH4Visibility.textContent = res2.forecast.forecastday[2].day.avgvis_km+" km";
       dayH5Visibility.textContent = res2.forecast.forecastday[1].day.avgvis_km+" km";
+
+      console.log(res2.forecast.forecastday[1].day.avgvis_km + " avg 1 vis");
     }
 
   });
