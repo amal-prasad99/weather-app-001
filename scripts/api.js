@@ -6,7 +6,6 @@ function example(){
   searchBtnOnclick(searchInput);
   getForcastresult(searchInput);
   getHistoryresult(searchInput);
-
 }
 
 
@@ -49,11 +48,32 @@ function searchBtnOnclick(searchInput){
 
             nowWicon.src = resp.current.condition.icon;
             conditionText.textContent = resp.current.condition.text;
-            
+
+            callMap(resp.location.lat , resp.location.lon);
         }
     });
 
+
+    
+
 }
+
+var map = L.map('secondDiv').setView([0,0], 13);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+function callMap(lat , lon){
+
+  const marker = L.marker([0,0]).addTo(map);
+  marker.setLatLng([lat,lon]).update();
+  map.setView([lat,lon],13);
+
+}
+
 
 let forecastDate = $('.date');
 
@@ -320,7 +340,9 @@ function showPosition(position) {
 
     searchBtnOnclick(pos);
 
+
 }
 
 getLocation();
+
 
