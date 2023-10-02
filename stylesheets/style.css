@@ -45,9 +45,7 @@
 
 
 
-
-
-#line {
+#line,#line2 {
     margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
@@ -134,6 +132,7 @@
     height: 300px; 
     border: 5px;
     border-color: black;
+    margin-bottom: 90px;
 }
 /* -------------------------------- */
 
@@ -239,7 +238,7 @@
     height: 100%; 
     border-radius: 25px; 
     border: 1px solid white; 
-    background-color: #DCFFF9;
+    /* background-color: #DCFFF9; */
 }
 
 .cardicons {
@@ -380,6 +379,7 @@
     width: 150px;
     height: 520px;
 }
+
 
 
 /* History */

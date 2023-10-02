@@ -8,6 +8,9 @@ const mapFrame = document.getElementById('mapFrame');
 const statCardId = document.getElementById('statCardId');
 const cards = document.getElementsByClassName('centered-content'); 
 const itemStat = document.getElementById('itemStaiId');
+const line2 = document.getElementById('line2');
+// const bgColor = document.querySelector('.centered-content');
+const day5 = document.getElementById('day-5');
 
 toggle.addEventListener('click', function(){
     this.classList.toggle('bi-moon');
@@ -23,12 +26,10 @@ toggle.addEventListener('click', function(){
 
         // line
         line.style.background = 'black';
+        line2.style.background = 'black';
 
         // search div
         search.style.background = 'black';
-
-        // map
-        mapFrame.style.filter = 'invert(0%)';
 
         //Card
         statCardId.style.backgroundColor = '#DCFFF9';
@@ -40,7 +41,6 @@ toggle.addEventListener('click', function(){
 
         // itemStat
         itemStat.style.backgroundColor = '#fbff79';
-
 
 
     }else{
@@ -55,12 +55,10 @@ toggle.addEventListener('click', function(){
 
         // line
         line.style.background = 'white';
+        line2.style.background = 'white';
 
         // search div
         search.style.background = '#DBE3FF';
-
-        // map
-        mapFrame.style.filter = 'invert(100%)';
 
         //Card
         statCardId.style.backgroundColor = '#160E2E'
@@ -72,6 +70,7 @@ toggle.addEventListener('click', function(){
 
         // itemStat
         itemStat.style.backgroundColor = '#670869';
+
     }
 });
 
