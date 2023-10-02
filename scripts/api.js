@@ -1,8 +1,9 @@
 
-function example(){
+function onStart(){
 
   const search = document.getElementById("searchIn");
   const searchInput = search.value;
+
   searchBtnOnclick(searchInput);
   getForcastresult(searchInput);
   getHistoryresult(searchInput);
@@ -53,9 +54,6 @@ function searchBtnOnclick(searchInput){
         }
     });
 
-
-    
-
 }
 
 var map = L.map('secondDiv').setView([0,0], 13);
@@ -73,8 +71,6 @@ function callMap(lat , lon){
   map.setView([lat,lon],13);
 
 }
-
-
 let forecastDate = $('.date');
 
 // $.ajax({
@@ -86,6 +82,7 @@ let forecastDate = $('.date');
 //     }
 // });
 
+// Forcast
 
 function getForcastresult(searchInput){
 
@@ -189,6 +186,8 @@ const key = "ae02f9b1bf7241ea8c3173632232409";
   });
 
 }
+
+// History
 
 function getHistoryresult(searchInput) {
 
@@ -313,14 +312,9 @@ function getHistoryresult(searchInput) {
 
 }
 
-getHistoryresult();
-
-
-
 
 // ------------------------------------------------ current Location
 
-//var x = document.getElementById("demo");
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -343,6 +337,6 @@ function showPosition(position) {
 
 }
 
-getLocation();
+// getLocation();
 
 
