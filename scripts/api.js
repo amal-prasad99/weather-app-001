@@ -31,7 +31,7 @@ function searchBtnOnclick(searchInput){
     console.log(searchInput);
     $.ajax({
         method : "GET",
-        url : `http://api.weatherapi.com/v1/current.json?key=${key}&q=${searchInput}`,
+        url : `https://api.weatherapi.com/v1/current.json?key=${key}&q=${searchInput}`,
         success : (resp) => {
             console.log(resp);
             
